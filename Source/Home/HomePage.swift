@@ -10,7 +10,7 @@ import StoneGenerator
 
 public struct HomePage: Page {
     
-    public let uri: URI = .path("index") // my NIO server capability
+    public let uri: URI = .empty // my NIO server capability
     
     public var body: some View {
         GlobalView(currentPage: .home) {
