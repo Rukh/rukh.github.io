@@ -17,7 +17,7 @@ struct EmojiCameraPage: Page {
         GlobalView(currentPage: .emojiCamera) {
             VStack(alignment: .leading) {
                 Text("Что это?").font(.title)
-                Text("Это приложение которое в реальном времени берет видеопоток с камеры телефона и каждый кадр разбивается на мозаику из юникод символов. Символы подбираются из заданного набора - ascii символы, китайские или emoji.")
+                Text("Это приложение, которое в реальном времени берет видеопоток с камеры телефона и каждый кадр разбивается на мозаику из юникод символов. Символы подбираются из заданного набора: ascii символы, китайские или emoji.")
                 Text("Каждый символ подбирается так, чтобы его цвет соответствовал части исходной картинки.")
                 Text("Например").font(.title)
                 HStack(alignment: .bottom) {
@@ -28,7 +28,7 @@ struct EmojiCameraPage: Page {
                             .lineSpacing(4.3)
 //                            .tracking(0.5)
                             .background(.black)
-                        Text("Мой macbock в emoji символах. \(sizeString) символа.")
+                        Text("Мой MacBook в emoji символах. \(sizeString) символа.")
                             .font(.footnote)
                     }
                     VStack {
