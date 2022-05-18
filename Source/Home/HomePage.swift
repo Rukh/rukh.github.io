@@ -83,11 +83,11 @@ public struct HomePage: Page {
         HStack(alignment: .center) {
             Image("selfie.jpg")
                 .resizable()
+                .frame(width: 70, height: 90)
                 .background {
                     Color(white: 0.97)
                     ProgressView()
                 }
-                .frame(width: 70, height: 90)
                 .cornerRadius(8)
             Text("Меня зовут Дмитрий Гулягин, и уже больше 5 лет я занимаюсь iOS разработкой. В этом блоге я расказываю о своих pet-проектах и пишу технические статьи про iOS, SwiftUI и Metal шейдеры. Обратная связь - <a href='https://t.me/roxot'>@Roxot</a>, буду рад вашему фидбеку 🙂.")
         }
@@ -99,11 +99,4 @@ public struct HomePage: Page {
         .foregroundColor(.labelTextSecond)
     }
     
-}
-
-extension Color {
-    
-    static var blue = Color(hex: "0577FF")
-    static var green = Color(hex: "34C859")
-
 }

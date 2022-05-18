@@ -25,17 +25,11 @@ struct ProjectTag: View {
             .padding(.vertical, 2)
             .padding(.horizontal, 6)
             .background {
-//                switch name {
-//                case .swift: Color(hex: 0xD75941)
-//                case .framework: Color(hex: 0x0096FF)
-//                case .game: Color(hex: 0x009643)
-//                case .blog: Color(hex: 0xFFFB00)
-//                }
                 switch name {
-                case .swift: Color(hex: "D75941")
-                case .framework: Color(hex: "0096FF")
-                case .game: Color(hex: "009643")
-                case .blog: Color(hex: "5E5E5E") //#5FBD5E
+                case .swift: Color.orange
+                case .framework: Color.cyan
+                case .game: Color.green
+                case .blog: Color.gray
                 }
             }
             .cornerRadius(4)
@@ -71,7 +65,7 @@ struct ProjectCard: View {
                 }
                 .foregroundColor(.white)
             }
-            .frame(width: 150)
+            .frame(width: 150, alignment: .leading)
             Text(description)
                 .frame(maxWidth: .infinity, alignment: .leading)
             button
