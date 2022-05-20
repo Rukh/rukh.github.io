@@ -16,12 +16,16 @@ struct StoneTestView: View {
             .testView(width: width, height: 400, name: "colorTest")
         fontTest
             .testView(width: width, height: 400, name: "fontTest")
-        backgroundPaddingTest
-            .testView(width: width, height: 300, name: "backgroundPaddingTest")
-        flexframeTest
-            .testView(width: width, height: 200, name: "flexframeTest")
+        paddingTest
+            .testView(width: width, height: 300, name: "paddingTest")
+        flexFrameTest
+            .testView(width: width, height: 200, name: "flexFrameTest")
         stackTest
             .testView(width: width, height: 300, name: "stackTest")
+        imageTest
+            .testView(width: width, height: 300, name: "imageTest")
+        backgroundTest
+            .testView(width: width, height: 200, name: "backgroundTest")
     }
     
     @ViewBuilder
@@ -77,7 +81,7 @@ struct StoneTestView: View {
     }
     
     @ViewBuilder
-    var backgroundPaddingTest: some View {
+    var paddingTest: some View {
         Text("Background & padding test")
             .foregroundColor(.white)
             .padding(10)
@@ -93,7 +97,7 @@ struct StoneTestView: View {
     }
     
     @ViewBuilder
-    var flexframeTest: some View {
+    var flexFrameTest: some View {
         VStack(spacing: 10) {
             Text("Text ignore alignment")
                 .frame(alignment: .leading)
@@ -138,6 +142,61 @@ struct StoneTestView: View {
         }
     }
     
+    @ViewBuilder
+    var imageTest: some View {
+        VStack(spacing: 10) {
+            Image("lena")
+                .frame(width: 50, height: 50)
+                .border(.green)
+            HStack(spacing: 10) {
+                Image("lena")
+                    .frame(width: 50, height: 50)
+                    .clipped()
+                    .border(.red)
+                Image("lena")
+                    .resizable()
+                    .frame(height: 50)
+                    .border(.blue)
+            }
+            Image("lena")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 50)
+                .border(.black)
+            Image("lena")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 50)
+                .clipped()
+                .border(.pink)
+        }
+        .clipped()
+    }
+    
+    @ViewBuilder
+    var backgroundTest: some View {
+        VStack(spacing: 10) {
+            Color.teal.opacity(0.5)
+                .frame(width: 40, height: 40)
+                .background { Text("BACKGROUND") }
+            Color.orange.opacity(0.5)
+                .frame(width: 40, height: 40)
+                .background {
+                    Text("BACKGROUND")
+                        .frame(width: 200)
+                }
+            Text(" + ")
+                .foregroundColor(.white)
+                .background { Color.blue }
+                .background {
+                    Text("BACKGROUND")
+                        .frame(width: 200)
+                }
+            Text("----------")
+                .background { Color.indigo }
+        }
+    }
+    
 }
 
 extension View {
@@ -152,8 +211,8 @@ extension View {
                 self.frame(width: width, height: height)
                 Color(white: 0.3)
                     .frame(width: 1)
-                Image(name + ".jpg")
-//                    .resizable()
+                Image(name)
+                    .resizable()
                     .frame(width: width, height: height)
             }
         }

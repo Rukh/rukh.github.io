@@ -36,10 +36,10 @@ public struct HomePage: Page {
         .padding(45)
         .foregroundColor(.white)
         .background {
-//            Color.labelTextSecond
-            Image("code.jpg")
+            Color.labelTextSecond
+            Image("code")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
             Color(white: 0, opacity: 0.75)
         }
         .cornerRadius(15)
@@ -81,9 +81,10 @@ public struct HomePage: Page {
     @ViewBuilder
     private var myCard: some View {
         HStack(alignment: .center) {
-            Image("selfie.jpg")
+            Image("selfie")
                 .resizable()
-                .frame(width: 70, height: 90)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 70)
                 .background {
                     Color(white: 0.97)
                     ProgressView()

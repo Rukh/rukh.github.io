@@ -20,20 +20,20 @@ public struct WasteFactoryPage: Page {
                 Text("Скриншоты").font(.title)
                 HStack() {
                     let imageHeight: Float = 600
-                    Image("waste_factory_1.jpg")
+                    Image("waste_factory_1")
                         .resizable()
+                        .frame(width: 0.462 * imageHeight, height: imageHeight)
                         .background {
                             Color(white: 0.97)
                             ProgressView()
                         }
-                        .frame(width: 0.462 * imageHeight, height: imageHeight)
-                    Image("waste_factory_2.jpg")
+                    Image("waste_factory_2")
                         .resizable()
+                        .frame(width: 0.462 * imageHeight, height: imageHeight)
                         .background {
                             Color(white: 0.97)
                             ProgressView()
                         }
-                        .frame(width: 0.462 * imageHeight, height: imageHeight)
                 }
             }
             .frame(maxWidth: .infinity)

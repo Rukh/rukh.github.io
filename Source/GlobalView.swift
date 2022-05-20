@@ -85,9 +85,9 @@ struct GlobalView<Conntent>: View where Conntent : View {
         } else {
             Button(page.rawValue)
                 .font(font)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
                 .background(.blue)
-                .padding(.horizontal)
-                .padding(.vertical, 8)
                 .cornerRadius(8)
                 .foregroundColor(.white)
         }
