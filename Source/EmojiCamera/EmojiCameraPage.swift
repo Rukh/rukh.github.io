@@ -16,45 +16,46 @@ struct EmojiCameraPage: Page {
     var body: some View {
         GlobalView(currentPage: .emojiCamera) {
             VStack(alignment: .leading) {
-                Text("Что это?").font(.title)
+                Text("Что это?").font(.title).padding(.top)
                 Text("Это приложение, которое в реальном времени берет видеопоток с камеры телефона и каждый кадр разбивается на мозаику из юникод символов. Символы подбираются из заданного набора: ascii символы, китайские или emoji.")
                 Text("Каждый символ подбирается так, чтобы его цвет соответствовал части исходной картинки.")
-                Text("Например").font(.title)
-                HStack(alignment: .bottom) {
-                    VStack {
-                        let sizeString = textImageSize(EmojiiCameraPhoto.macbook)
-                        Text(EmojiiCameraPhoto.macbook)
-                            .font(.custom(size: 3, fontFamily: .monospace))
-                            .lineSpacing(4.3)
-//                            .tracking(0.5)
-                            .background(.black)
-                        Text("Мой MacBook в emoji символах. \(sizeString) символа.")
-                            .font(.footnote)
-                    }
+                Text("Например").font(.title).padding(.top)
+                HStack(alignment: .bottom, spacing: 20) {
                     VStack {
                         let sizeString = textImageSize(EmojiiCameraPhoto.photo)
                         Text(EmojiiCameraPhoto.photo)
-                            .font(.custom(size: 5, fontFamily: .monospace))
-                            .lineSpacing(5.5)
+                            .font(.custom(size: 8, fontFamily: .monospace))
+                            .lineSpacing(-1)
                             .tracking(2.5)
                             .background(.black)
                             .foregroundColor(.white)
                         Text("Селфи в ASCII символах. \(sizeString) символа.")
                             .font(.footnote)
                     }
+                    VStack {
+                        let sizeString = textImageSize(EmojiiCameraPhoto.pot)
+                        Text(EmojiiCameraPhoto.pot)
+                            .font(.custom(size: 16, fontFamily: .monospace))
+                            .lineSpacing(-2)
+                            .background(.black)
+                            .foregroundColor(.white)
+                        Text("Кружечка, китайский сегмент unicode. \(sizeString) символа.")
+                            .font(.footnote)
+//                        Text("Качество лучше из за более точной аппроксимации цвета.")
+//                            .font(.footnote)
+                    }
                 }
                 VStack {
-                    let sizeString = textImageSize(EmojiiCameraPhoto.pot)
-                    Text(EmojiiCameraPhoto.pot)
-                        .font(.custom(size: 10, fontFamily: .monospace))
-                        .lineSpacing(11)
+                    let sizeString = textImageSize(EmojiiCameraPhoto.macbook)
+                    Text(EmojiiCameraPhoto.macbook)
+                        .font(.custom(size: 5, fontFamily: .monospace))
+                        .lineSpacing(1.3)
                         .background(.black)
-                        .foregroundColor(.white)
-                    Text("Кружечка, китайский сегмент unicode. \(sizeString) символа.")
+                    Text("Мой MacBook в emoji символах. \(sizeString) символа.")
                         .font(.footnote)
-//                    Text("Качество лучше из за более точной аппроксимации цвета.")
-//                        .font(.footnote)
                 }
+                .padding(.top)
+                Spacer()
             }
         }
     }

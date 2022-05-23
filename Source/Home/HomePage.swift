@@ -14,11 +14,12 @@ public struct HomePage: Page {
     
     public var body: some View {
         GlobalView(currentPage: .home) {
-            VStack {
+            VStack(spacing: 16) {
                 header
                 projectCards
                 myCard
             }
+            .padding(.vertical, 8)
         }
     }
     
@@ -49,7 +50,7 @@ public struct HomePage: Page {
     
     @ViewBuilder
     private var projectCards: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 16) {
             ProjectCard(
                 title: "DiG Blog",
                 tags: [.swift, .blog],

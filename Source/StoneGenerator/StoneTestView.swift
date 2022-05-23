@@ -15,22 +15,24 @@ struct StoneTestView: View {
         colorTest
             .testView(width: width, height: 400, name: "colorTest")
         fontTest
-            .testView(width: width, height: 400, name: "fontTest")
+            .testView(width: width, height: 300, name: "fontTest")
         paddingTest
-            .testView(width: width, height: 300, name: "paddingTest")
+            .testView(width: width, height: 250, name: "paddingTest")
         flexFrameTest
-            .testView(width: width, height: 200, name: "flexFrameTest")
+            .testView(width: width, height: 180, name: "flexFrameTest")
         stackTest
-            .testView(width: width, height: 300, name: "stackTest")
+            .testView(width: width, height: 250, name: "stackTest")
         imageTest
             .testView(width: width, height: 300, name: "imageTest")
         backgroundTest
             .testView(width: width, height: 200, name: "backgroundTest")
+        textTest
+            .testView(width: width, height: 250, name: "textTest")
     }
     
     @ViewBuilder
     var fontTest: some View {
-        VStack(spacing: 10) {
+        VStack {
             Group {
                 Text("largeTitle").font(.largeTitle)
                 Text("title").font(.title)
@@ -51,28 +53,28 @@ struct StoneTestView: View {
     
     @ViewBuilder
     var colorTest: some View {
-        VStack(spacing: 10) {
-            HStack(spacing: 10) {
+        VStack {
+            HStack {
                 Color.red
                 Color.orange
                 Color.yellow
             }
-            HStack(spacing: 10) {
+            HStack {
                 Color.green
                 Color.mint
                 Color.teal
             }
-            HStack(spacing: 10) {
+            HStack {
                 Color.cyan
                 Color.blue
                 Color.indigo
             }
-            HStack(spacing: 10) {
+            HStack {
                 Color.purple
                 Color.pink
                 Color.brown
             }
-            HStack(spacing: 10) {
+            HStack {
                 Color.white
                 Color.gray
                 Color.black
@@ -82,52 +84,69 @@ struct StoneTestView: View {
     
     @ViewBuilder
     var paddingTest: some View {
-        Text("Background & padding test")
+        Text("Padding test")
+            .font(.caption)
             .foregroundColor(.white)
-            .padding(10)
+            .padding()
             .background(Color.black)
-            .padding(10)
+            .padding()
             .background(Color.white)
-            .padding(10)
+            .padding()
             .background(Color.black)
-            .padding(10)
+            .padding()
             .background(Color.white)
-            .padding(10)
+            .padding()
             .background(Color.black)
     }
     
     @ViewBuilder
     var flexFrameTest: some View {
-        VStack(spacing: 10) {
-            Text("Text ignore alignment")
-                .frame(alignment: .leading)
-            Text("Frame leading")
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text("Frame trailing")
-                .frame(maxWidth: .infinity, alignment: .trailing)
-            Text("Frame bottom")
-                .frame(maxWidth: .infinity, alignment: .bottom)
+        let color = Color.blue.opacity(0.5)
+        HStack {
+            VStack {
+                color
+                    .frame(width: 20, height: 20)
+                    .frame(width: 100, height: 30)
+                    .background(color)
+                color
+                    .frame(width: 20, height: 20)
+                    .frame(width: 100, alignment: .trailing)
+                    .background(color)
+                color
+                    .frame(width: 20)
+                    .frame(width: 100, height: 40)
+                    .background(color)
+            }
+            color
+                .frame(width: 20)
+            color
+                .frame(width: 20, height: 20)
+                .frame(width: 50, height: 50, alignment: .bottomLeading)
+                .background(color.opacity(0.5))
+                .frame(width: 100, height: 100, alignment: .top)
+                .background(color)
         }
     }
     
     @ViewBuilder
     var stackTest: some View {
-        VStack(spacing: 10) {
-            VStack(spacing: 10) {
+        VStack {
+            VStack {
                 Text("1")
                 Text("2")
                 Text("3")
             }
-            HStack(spacing: 10) {}
+            HStack {}
                 .background(Color.red)
-            HStack(spacing: 10) {
+            HStack {
                 Text("Single")
             }
-            HStack(spacing: 10) {
-                Text("Left")
-                Text("Right")
+            HStack {
+                Text("Left").background(Color.black)
+                Text("Right").background(Color.black)
             }
-            HStack(spacing: 10) {
+            .foregroundColor(.white)
+            HStack {
                 Text("Extrime left")
                 Spacer()
                 Text("Extrime right")
@@ -144,38 +163,52 @@ struct StoneTestView: View {
     
     @ViewBuilder
     var imageTest: some View {
-        VStack(spacing: 10) {
-            Image("lena")
-                .frame(width: 50, height: 50)
-                .border(.green)
-            HStack(spacing: 10) {
+        HStack {
+            VStack {
                 Image("lena")
                     .frame(width: 50, height: 50)
-                    .clipped()
-                    .border(.red)
+                    .border(.green)
+                HStack {
+                    Image("lena")
+                        .frame(width: 50, height: 50)
+                        .clipped()
+                        .border(.red)
+                    Image("lena")
+                        .resizable()
+                        .frame(height: 50)
+                        .border(.blue)
+                }
                 Image("lena")
                     .resizable()
+                    .aspectRatio(contentMode: .fit)
                     .frame(height: 50)
-                    .border(.blue)
+                    .border(.black)
+                Image("lena")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(height: 50)
+                    .clipped()
+                    .border(.pink)
             }
-            Image("lena")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 50)
-                .border(.black)
-            Image("lena")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 50)
-                .clipped()
-                .border(.pink)
+            VStack {
+                Image("lena")
+                    .resizable()
+                    .frame(width: 50, height: 100)
+                    .border(.yellow)
+                Image("lena")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 100)
+                    .border(.teal)
+            }
+            
         }
         .clipped()
     }
     
     @ViewBuilder
     var backgroundTest: some View {
-        VStack(spacing: 10) {
+        VStack {
             Color.teal.opacity(0.5)
                 .frame(width: 40, height: 40)
                 .background { Text("BACKGROUND") }
@@ -194,6 +227,41 @@ struct StoneTestView: View {
                 }
             Text("----------")
                 .background { Color.indigo }
+        }
+    }
+    
+    @ViewBuilder
+    var textTest: some View {
+        VStack {
+            HStack {
+                Text("body")
+                Text("body heavy")
+                    .fontWeight(.heavy)
+            }
+            Text("first line\nlong second line")
+                .lineSpacing(10)
+                .background(Color.teal.opacity(0.5))
+            Text("center\nmultiline text alignment")
+                .multilineTextAlignment(.center)
+                .background(Color.orange.opacity(0.5))
+            Text("tracking line")
+                .tracking(10)
+            HStack {
+                VStack {
+                    Text("non colapse")
+                    Color.red.opacity(0.5)
+                        .frame(width: 40, height: 16)
+                    Text("non colapse")
+                }
+                .background(Color.red.opacity(0.5))
+                VStack {
+                    Text("colapse")
+                    Text("colapse")
+                    Text("colapse")
+                }
+                .background(Color.blue.opacity(0.5))
+            }
+            
         }
     }
     

@@ -36,7 +36,7 @@ struct GlobalView<Conntent>: View where Conntent : View {
         
     @ViewBuilder
     var body: some View {
-        VStack() {
+        VStack {
             header
                 .frame(maxWidth: 960)
                 .padding(.horizontal)
@@ -52,7 +52,7 @@ struct GlobalView<Conntent>: View where Conntent : View {
     @ViewBuilder
     var header: some View {
         VStack {
-            HStack {
+            HStack(spacing: 20) {
                 Text("DiG")
                     .font(.title.withWeight(.black))
                     .padding(.horizontal, 8)
@@ -98,13 +98,12 @@ struct GlobalView<Conntent>: View where Conntent : View {
         VStack(spacing: 0) {
             Color.labelTextFourth
                 .frame(height: 1)
-                .frame(maxWidth: .infinity)
             HStack {
                 footerText("© \(date) \(siteName). All rights reserved.")
                 Spacer()
                 footerText("created by Dmitry Gulyagin for fun")
             }
-            .padding()
+            .padding(8)
         }
     }
     
