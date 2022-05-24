@@ -9,7 +9,6 @@
 import StoneGenerator
 
 struct StoneTestView: View {
-    
     var body: some View {
         let width: Float = 250
         colorTest
@@ -19,7 +18,7 @@ struct StoneTestView: View {
         paddingTest
             .testView(width: width, height: 250, name: "paddingTest")
         flexFrameTest
-            .testView(width: width, height: 180, name: "flexFrameTest")
+            .testView(width: width, height: 200, name: "flexFrameTest")
         stackTest
             .testView(width: width, height: 250, name: "stackTest")
         imageTest
@@ -102,7 +101,7 @@ struct StoneTestView: View {
     @ViewBuilder
     var flexFrameTest: some View {
         let color = Color.blue.opacity(0.5)
-        HStack {
+        HStack(alignment: .bottom) {
             VStack {
                 color
                     .frame(width: 20, height: 20)
@@ -116,6 +115,10 @@ struct StoneTestView: View {
                     .frame(width: 20)
                     .frame(width: 100, height: 40)
                     .background(color)
+                color
+                    .frame(width: 30, height: 10)
+                    .frame(width: 10, height: 30)
+                    .background(color)
             }
             color
                 .frame(width: 20)
@@ -123,9 +126,10 @@ struct StoneTestView: View {
                 .frame(width: 20, height: 20)
                 .frame(width: 50, height: 50, alignment: .bottomLeading)
                 .background(color.opacity(0.5))
-                .frame(width: 100, height: 100, alignment: .top)
+                .frame(width: 80, height: 80, alignment: .top)
                 .background(color)
         }
+        .padding()
     }
     
     @ViewBuilder
