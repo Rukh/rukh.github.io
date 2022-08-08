@@ -44,7 +44,7 @@ public struct HomePage: Page {
             Color(white: 0, opacity: 0.75)
         }
         .cornerRadius(15)
-        .frame(height: 200)
+//        .frame(height: 200)
     }
     
     
@@ -84,8 +84,8 @@ public struct HomePage: Page {
         HStack(alignment: .center) {
             Image("selfie")
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 70)
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 70, height: 90)
                 .background {
                     Color(white: 0.97)
                     ProgressView()

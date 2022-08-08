@@ -9,6 +9,7 @@
 import StoneGenerator
 
 struct StoneTestView: View {
+    
     var body: some View {
         let width: Float = 250
         colorTest
@@ -27,6 +28,8 @@ struct StoneTestView: View {
             .testView(width: width, height: 200, name: "backgroundTest")
         textTest
             .testView(width: width, height: 250, name: "textTest")
+        gradientTest
+            .testView(width: width, height: 250, name: "gradientTest")
     }
     
     @ViewBuilder
@@ -213,9 +216,22 @@ struct StoneTestView: View {
     @ViewBuilder
     var backgroundTest: some View {
         VStack {
-            Color.teal.opacity(0.5)
-                .frame(width: 40, height: 40)
-                .background { Text("BACKGROUND") }
+            HStack {
+                Color.teal.opacity(0.5)
+                    .frame(width: 34, height: 40)
+                    .overlay {
+                        Text("BACKGROUND").background {
+                            Color.blue.opacity(0.5)
+                        }
+                    }
+                Color.teal.opacity(0.5)
+                    .frame(width: 69, height: 40)
+                    .overlay {
+                        Text("BACKGROUND").background {
+                            Color.blue.opacity(0.5)
+                        }
+                    }
+            }
             Color.orange.opacity(0.5)
                 .frame(width: 40, height: 40)
                 .background {
@@ -226,6 +242,7 @@ struct StoneTestView: View {
                 .foregroundColor(.white)
                 .background { Color.blue }
                 .background {
+                    Color.green.opacity(0.5)
                     Text("BACKGROUND")
                         .frame(width: 200)
                 }
@@ -266,6 +283,47 @@ struct StoneTestView: View {
                 .background(Color.blue.opacity(0.5))
             }
             
+        }
+    }
+    
+    @ViewBuilder
+    var gradientTest: some View {
+        HStack(spacing: 0) {
+            Circle()
+                .strokeBorder(
+                    AngularGradient(
+                        gradient: Gradient(
+                            colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple, .red]
+                        ),
+                        center: .center,
+                        startAngle: .zero,
+                        endAngle: .degrees(360)
+                    ),
+                    lineWidth: 30
+                )
+                .padding(4)
+                .overlay {
+                    Rectangle()
+                        .fill(
+                            AngularGradient(
+                                gradient: Gradient(
+                                    colors: [.teal, .blue, .indigo]
+                                ),
+                                center: .center
+                            )
+                        )
+                        .frame(width: 80, height: 80)
+                }
+            LinearGradient(
+                gradient: Gradient(
+                    colors: [.white, .yellow, .orange, .red, .black]
+                ),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .frame(width: 30)
+            .cornerRadius(15)
+            .padding(4)
         }
     }
     

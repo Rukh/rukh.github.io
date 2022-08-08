@@ -43,21 +43,21 @@ struct ProjectCard: View {
     let tags: [ProjectTag.Name]
     let description: String
     
-    var button: BezerPath {
-        BezerPath {
-            let points = [
-                Point(x: 0, y: 1),
-                Point(x: 1, y: 0),
-                Point(x: 0, y: -1),
-            ]
-            $0.addPolyline(points)
-        }
-        .strokeBorder(lineWidth: 3)
-    }
+//    var button: Path {
+//        Path {
+//            let points = [
+//                Point(x: 0, y: 1),
+//                Point(x: 1, y: 0),
+//                Point(x: 0, y: -1),
+//            ]
+//            $0.addPolyline(points)
+//        }
+//        .strokeBorder(lineWidth: 3)
+//    }
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(title)
                     .font(.title)
                 HStack {
@@ -68,8 +68,8 @@ struct ProjectCard: View {
             .frame(width: 150, alignment: .leading)
             Text(description)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            button
-                .frame(width: 10)
+//            button
+//                .frame(width: 10, height: 20)
         }
         .padding()
 //        .background(Color(white: 0.25))
