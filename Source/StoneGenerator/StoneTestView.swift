@@ -333,11 +333,11 @@ extension View {
     
     @ViewBuilder
     func testView(width: Float, height: Float, name: String) -> some View {
-        VStack {
+        VStack(spacing: 16) {
             Text(name.prefix(1).capitalized + name.dropFirst(1))
                 .font(.title2)
                 .fontWeight(.thin)
-            HStack {
+            HStack(spacing: 16) {
                 self.frame(width: width, height: height)
                 Color(white: 0.3)
                     .frame(width: 1)

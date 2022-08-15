@@ -34,7 +34,7 @@ public struct StoneGeneratorPage: Page {
                 Group {
                     Text("Pixel Perfect тесты").font(.title).padding(.top)
                     Text("Тут можно увидеть, соотвествует ли сгенерированая верстка сайта дизайну.")
-                    HStack {
+                    HStack(spacing: 16) {
                         Text("Верстка")
                             .font(.title2)
                             .fontWeight(.thin)
@@ -46,7 +46,7 @@ public struct StoneGeneratorPage: Page {
                             .fontWeight(.thin)
                             .frame(width: 250)
                     }
-                    .frame(width: 551)
+                    .frame(width: 567)
                     .padding(.top)
                     StoneTestView()
                     animationTest
