@@ -112,7 +112,10 @@ struct StoneTestView: View {
                     .background(color)
                 color
                     .frame(width: 20, height: 20)
-                    .frame(width: 100, alignment: .trailing)
+                    .frame(
+                        width: 100,
+                        alignment: .trailing
+                    )
                     .background(color)
                 color
                     .frame(width: 20)
@@ -127,9 +130,15 @@ struct StoneTestView: View {
                 .frame(width: 20)
             color
                 .frame(width: 20, height: 20)
-                .frame(width: 50, height: 50, alignment: .bottomLeading)
+                .frame(
+                    width: 50, height: 50,
+                    alignment: .bottomLeading
+                )
                 .background(color.opacity(0.5))
-                .frame(width: 80, height: 80, alignment: .top)
+                .frame(
+                    width: 80, height: 80,
+                    alignment: .top
+                )
                 .background(color)
         }
         .padding()
@@ -293,7 +302,16 @@ struct StoneTestView: View {
                 .strokeBorder(
                     AngularGradient(
                         gradient: Gradient(
-                            colors: [.red, .orange, .yellow, .green, .cyan, .blue, .purple, .red]
+                            colors: [
+                                .red,
+                                .orange,
+                                .yellow,
+                                .green,
+                                .cyan,
+                                .blue,
+                                .purple,
+                                .red,
+                            ]
                         ),
                         center: .center,
                         startAngle: .zero,
@@ -307,7 +325,11 @@ struct StoneTestView: View {
                         .fill(
                             AngularGradient(
                                 gradient: Gradient(
-                                    colors: [.teal, .blue, .indigo]
+                                    colors: [
+                                        .teal,
+                                        .blue,
+                                        .indigo,
+                                    ]
                                 ),
                                 center: .center
                             )
@@ -316,7 +338,13 @@ struct StoneTestView: View {
                 }
             LinearGradient(
                 gradient: Gradient(
-                    colors: [.white, .yellow, .orange, .red, .black]
+                    colors: [
+                        .white,
+                        .yellow,
+                        .orange,
+                        .red,
+                        .black,
+                    ]
                 ),
                 startPoint: .top,
                 endPoint: .bottom
@@ -329,10 +357,51 @@ struct StoneTestView: View {
     
 }
 
-extension View {
+private struct TestCardView: View {
+    
+    let width: Float
+    let height: Float
+    let name: String
+    
+//    @State private var codeIsHidden = true
+
+//    @ViewBuilder
+//    var body: some View {
+//        VStack(spacing: 16) {
+//            HStack {
+//                Text(name.prefix(1).capitalized + name.dropFirst(1))
+//                    .font(.title2)
+//                    .fontWeight(.thin)
+////                Toggle(isOn: $codeIsHidden) {
+////                    Button("Show code")
+////                }
+//            }
+//            HStack(spacing: 16) {
+//                self.frame(width: width, height: height)
+//                Color(white: 0.3)
+//                    .frame(width: 1)
+//                Image(name)
+//                    .resizable()
+//                    .frame(width: width, height: height)
+//            }
+////            let sample = StoneTestViewParser.codeSample(for: name)
+////            Text(sample)
+////                .font(.caption2)
+////                .fontWeight(.light)
+////                .monospaced()
+////                .padding()
+////                .background(Color(hex: "11151D"))
+////                .foregroundColor(Color(hex: "9BB9FA"))
+////                .cornerRadius(8)
+//        }
+//        .padding()
+//        .cornerRadius(8)
+//        .border(.default)
+//        .padding(.vertical)
+//    }
     
     @ViewBuilder
-    func testView(width: Float, height: Float, name: String) -> some View {
+    var body: some View {
         VStack(spacing: 16) {
             Text(name.prefix(1).capitalized + name.dropFirst(1))
                 .font(.title2)
@@ -351,5 +420,73 @@ extension View {
         .border(.default)
         .padding(.vertical)
     }
+
+}
+
+extension View {
+    
+//    @ViewBuilder
+//    func testView(width: Float, height: Float, name: String) -> some View {
+//        TestCardView(width: width, height: height, name: name)
+//    }
+    
+    @ViewBuilder
+    func testView(width: Float, height: Float, name: String) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(name.prefix(1).capitalized + name.dropFirst(1))
+                .font(.caption2)
+                .fontWeight(.thin)
+                .padding(.horizontal)
+                .padding(.top, -13)
+            HStack(spacing: 16) {
+                self.frame(width: width, height: height)
+                Color(white: 0.3)
+                    .frame(width: 1)
+                Image(name)
+                    .resizable()
+                    .frame(width: width, height: height)
+                Color(white: 0.3)
+                    .frame(width: 1)
+                let sample = StoneTestViewParser.codeSample(for: name)
+                ScrollView {
+                    Text(sample)
+                        .font(.caption2)
+                        .fontWeight(.light)
+                        .monospaced()
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .frame(width: width * 1.5, height: height)
+                .background(Color(hex: "11151D"))
+                .foregroundColor(Color(hex: "9BB9FA"))
+//                    .cornerRadius(8)
+            }
+            .padding()
+            .cornerRadius(8)
+            .border(.default)
+        }
+        .padding(.vertical)
+    }
+    
+//    @ViewBuilder
+//    func testView(width: Float, height: Float, name: String) -> some View {
+//        VStack(spacing: 16) {
+//            Text(name.prefix(1).capitalized + name.dropFirst(1))
+//                .font(.title2)
+//                .fontWeight(.thin)
+//            HStack(spacing: 16) {
+//                self.frame(width: width, height: height)
+//                Color(white: 0.3)
+//                    .frame(width: 1)
+//                Image(name)
+//                    .resizable()
+//                    .frame(width: width, height: height)
+//            }
+//        }
+//        .padding()
+//        .cornerRadius(8)
+//        .border(.default)
+//        .padding(.vertical)
+//    }
     
 }
